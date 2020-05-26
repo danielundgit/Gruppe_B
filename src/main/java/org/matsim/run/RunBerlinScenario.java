@@ -72,7 +72,7 @@ public final class RunBerlinScenario {
 		}
 		
 		if ( args.length==0 ) {
-			args = new String[] {"scenarios/berlin-v5.5-10pct/input/berlin-v5.5-10pct.config.xml"}  ;
+			args = new String[] {"scenarios/berlin-v5.5-1pct/input/berlin-v5.5-1pct.config.xml"}  ;
 		}
 
 		Config config = prepareConfig( args ) ;
@@ -81,6 +81,8 @@ public final class RunBerlinScenario {
 		controler.run() ;
 
 	}
+
+
 
 	public static Controler prepareControler( Scenario scenario ) {
 		// note that for something like signals, and presumably drt, one needs the controler object
@@ -103,7 +105,7 @@ public final class RunBerlinScenario {
 					+ "Should only be used for testing or car-focused studies with a fixed modal split.  ");
 		}
 		
-		
+
 		
 		// use the (congested) car travel time for the teleported ride mode
 		controler.addOverridingModule( new AbstractModule() {
@@ -191,6 +193,9 @@ public final class RunBerlinScenario {
 		config.plansCalcRoute().removeModeRoutingParams("undefined");
 		
 		config.qsim().setInsertingWaitingVehiclesBeforeDrivingVehicles( true );
+
+		// Last iteration to xy (starting iteration at 0)
+		config.controler().setLastIteration(1);
 				
 		// vsp defaults
 		config.vspExperimental().setVspDefaultsCheckingLevel( VspExperimentalConfigGroup.VspDefaultsCheckingLevel.info );
