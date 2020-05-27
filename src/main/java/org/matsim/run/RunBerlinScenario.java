@@ -84,7 +84,7 @@ public final class RunBerlinScenario {
 
 	}
 
-
+			// Testkommentar
 
 	public static Controler prepareControler( Scenario scenario ) {
 		// note that for something like signals, and presumably drt, one needs the controler object
